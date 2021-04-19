@@ -1,6 +1,3 @@
-schema
-  @sdl(
-    files: [ "schema/users.graphql" ]
-  ) {
+schema @sdl(files: ["schema/recipes.graphql"]) {
   query: Query
 }

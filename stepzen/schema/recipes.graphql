@@ -1,0 +1,12 @@
+type Recipe {
+  id: ID!
+  title: String!
+  image: String!
+}
+
+type Query {
+  getRecipes: [Recipe]
+    @rest(
+      endpoint: "https://api.spoonacular.com/recipes/findByIngredients?apiKey=5fcd92364fa0480082a34f45fa34109f&ingredients=apples,+flour,+sugar&number=2"
+    )
+}
