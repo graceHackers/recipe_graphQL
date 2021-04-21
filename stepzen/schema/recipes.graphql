@@ -5,9 +5,9 @@ type Recipe {
 }
 
 type Query {
-  getRecipes: [Recipe]
+  getRecipes(ingredient: String!): [Recipe]
     @rest(
-      endpoint: "https://api.spoonacular.com/recipes/findByIngredients?apiKey=$apikey&ingredients=apples,+flour,+sugar&number=2"
+      endpoint: "https://api.spoonacular.com/recipes/findByIngredients?apiKey=$apikey&ingredients=$ingredient&number=2"
       configuration: "recipe_config"
     )
 }
