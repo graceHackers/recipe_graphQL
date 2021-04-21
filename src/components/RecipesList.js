@@ -1,13 +1,11 @@
-import { useQuery } from '@apollo/react-hooks';
-import { GET_RECIPES_QUERY } from '../queries/getRecipes.js';
+import { useQuery } from "@apollo/react-hooks";
+import { GET_RECIPES_QUERY } from "../queries/getRecipes.js";
 
 export default function RecipesList(props) {
-  console.log('props', props);
+  console.log("props", props);
   const { loading, error, data } = useQuery(GET_RECIPES_QUERY, {
     variables: {
-      ingredient1: props.ingredient.ingredient1,
-      ingredient2: props.ingredient.ingredient2,
-      ingredient3: props.ingredient.ingredient3,
+      ingredients: props.ingredients,
     },
   });
   if (loading) return null;
