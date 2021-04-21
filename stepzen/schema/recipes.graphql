@@ -5,9 +5,13 @@ type Recipe {
 }
 
 type Query {
-  getRecipes(ingredient: String!): [Recipe]
+  getRecipes(
+    ingredient1: String!
+    ingredient2: String!
+    ingredient3: String!
+  ): [Recipe]
     @rest(
-      endpoint: "https://api.spoonacular.com/recipes/findByIngredients?apiKey=$apikey&ingredients=$ingredient&number=2"
+      endpoint: "https://api.spoonacular.com/recipes/findByIngredients?apiKey=$apikey&ingredients=$ingredient1,+$ingredient2,+$ingredient3&number=5"
       configuration: "recipe_config"
     )
 }

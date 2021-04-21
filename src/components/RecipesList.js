@@ -2,9 +2,13 @@ import { useQuery } from '@apollo/react-hooks';
 import { GET_RECIPES_QUERY } from '../queries/getRecipes.js';
 
 export default function RecipesList(props) {
-
+  console.log('props', props);
   const { loading, error, data } = useQuery(GET_RECIPES_QUERY, {
-    variables: { ingredient: props.ingredient },
+    variables: {
+      ingredient1: props.ingredient.ingredient1,
+      ingredient2: props.ingredient.ingredient2,
+      ingredient3: props.ingredient.ingredient3,
+    },
   });
   if (loading) return null;
   if (error) return `Error! ${error}`;
