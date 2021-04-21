@@ -1,5 +1,6 @@
-import { useQuery } from "@apollo/react-hooks";
-import { GET_RECIPES_QUERY } from "../queries/getRecipes.js";
+import { useQuery } from '@apollo/react-hooks';
+import { GET_RECIPES_QUERY } from '../queries/getRecipes.js';
+import { Link } from 'react-router-dom';
 
 export default function RecipesList(props) {
   const { loading, error, data } = useQuery(GET_RECIPES_QUERY, {
@@ -19,10 +20,12 @@ export default function RecipesList(props) {
       ) : (
         recipes.map((recipe) => (
           <ul key={recipe.id}>
-            <li>
-              <p>{recipe.title}</p>
-              <img src={recipe.image}></img>
-            </li>
+            <Link to={`/recipes/${recipe.id}`}>
+              <li>
+                <p>{recipe.title}</p>
+                <img src={recipe.image}></img>
+              </li>
+            </Link>
           </ul>
         ))
       )}
