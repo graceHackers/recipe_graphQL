@@ -4,6 +4,8 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import { client } from './utils/client';
 import HomePage from './pages/HomePage';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 console.log(process.env);
 render(
