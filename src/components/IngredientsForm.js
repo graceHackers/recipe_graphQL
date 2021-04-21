@@ -1,60 +1,76 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RecipesList from "./RecipesList";
 
 export default function IngredientsForm() {
-  const [ingredient, setIngredient] = useState({
-    ingredient1: "",
-    ingredient2: "",
-    ingredient3: "",
-  });
+  // const [ingredient, setIngredient] = useState({
+  //   ingredient1: "",
+  //   ingredient2: "",
+  //   ingredient3: "",
+  // });
   const [submitted, setSubmitted] = useState(false);
   const [submittedIngredients, setSubmittedIngredients] = useState("");
 
+  const [inputIngredients, setInputIngredients] = useState([]);
+  const [maxedout, setMaxedout] = useState(false);
+
+  //component did mount
+  useEffect(() => {
+    setInputIngredients([""]);
+  }, []);
+
   function handleSubmit(evt) {
     evt.preventDefault();
-    console.log(ingredient);
+    console.log(inputIngredients);
 
     //['tomato', 'cheese', 'flour'] => 'tomato,+cheese,+flour'
-    const stringIngredient = Object.values(ingredient).join(",+");
+    const stringIngredient = inputIngredients.join(",+");
+    console.log(stringIngredient);
 
     setSubmitted(true);
     setSubmittedIngredients(stringIngredient);
-    setIngredient({
-      ingredient1: "",
-      ingredient2: "",
-      ingredient3: "",
-    });
+    setInputIngredients([""]);
   }
 
-  function onChange(evt) {
-    setIngredient({ ...ingredient, [evt.target.name]: evt.target.value });
+  function onChange(evt, idx) {
+    console.log(inputIngredients);
+    //create copy of the ingredients array from state
+    const newArr = [...inputIngredients];
+    //change the element from passed in idx to input value
+    newArr[idx] = evt.target.value;
+    //set the ingredients array with new array (["tomato"])
+    setInputIngredients(newArr);
+  }
+
+  function handleAdd() {
+    if (inputIngredients.length < 10) {
+      setInputIngredients([...inputIngredients, ""]);
+    } else {
+      setMaxedout(true);
+    }
   }
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label>Ingredient1:</label>
-        <input
-          name="ingredient1"
-          value={ingredient.ingredient1}
-          onChange={onChange}
-        ></input>
-        <label>Ingredient2:</label>
-        <input
-          name="ingredient2"
-          value={ingredient.ingredient2}
-          onChange={onChange}
-        ></input>
-        <label>Ingredient3:</label>
-        <input
-          name="ingredient3"
-          value={ingredient.ingredient3}
-          onChange={onChange}
-        ></input>
-
+        {inputIngredients.map((inputValue, idx) => {
+          return (
+            <div key={idx + 1}>
+              <label>{`ingredient${idx + 1}`}:</label>
+              <input
+                name={`ingredient${idx + 1}`}
+                value={inputValue}
+                onChange={(evt) => onChange(evt, idx)}
+              ></input>
+            </div>
+          );
+        })}
+        <button type="button" onClick={handleAdd}>
+          Add
+        </button>
         <button type="submit">Submit</button>
       </form>
-      {submitted ? <RecipesList ingredients={submittedIngredients} /> : ""}
+      {maxedout && <p>You can't add anymore. Sorry.</p>}
+      {submitted && <RecipesList ingredients={submittedIngredients} />}
     </>
   );
 }
