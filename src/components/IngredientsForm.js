@@ -2,11 +2,6 @@ import React, { useState, useEffect } from "react";
 import RecipesList from "./RecipesList";
 
 export default function IngredientsForm() {
-  // const [ingredient, setIngredient] = useState({
-  //   ingredient1: "",
-  //   ingredient2: "",
-  //   ingredient3: "",
-  // });
   const [submitted, setSubmitted] = useState(false);
   const [submittedIngredients, setSubmittedIngredients] = useState("");
 
@@ -20,19 +15,16 @@ export default function IngredientsForm() {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    console.log(inputIngredients);
 
     //['tomato', 'cheese', 'flour'] => 'tomato,+cheese,+flour'
     const stringIngredient = inputIngredients.join(",+");
-    console.log(stringIngredient);
+    console.log("inside submit", stringIngredient);
 
     setSubmitted(true);
     setSubmittedIngredients(stringIngredient);
-    setInputIngredients([""]);
   }
 
   function onChange(evt, idx) {
-    console.log(inputIngredients);
     //create copy of the ingredients array from state
     const newArr = [...inputIngredients];
     //change the element from passed in idx to input value
@@ -49,6 +41,12 @@ export default function IngredientsForm() {
     }
   }
 
+  function handleDelete(evt, idx) {
+    setInputIngredients(
+      inputIngredients.filter((ingredient, index) => idx !== index)
+    );
+  }
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -61,6 +59,9 @@ export default function IngredientsForm() {
                 value={inputValue}
                 onChange={(evt) => onChange(evt, idx)}
               ></input>
+              <button type="button" onClick={(evt) => handleDelete(evt, idx)}>
+                x
+              </button>
             </div>
           );
         })}

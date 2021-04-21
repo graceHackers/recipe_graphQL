@@ -2,13 +2,11 @@ import { useQuery } from "@apollo/react-hooks";
 import { GET_RECIPES_QUERY } from "../queries/getRecipes.js";
 
 export default function RecipesList(props) {
-  console.log("props", props);
   const { loading, error, data } = useQuery(GET_RECIPES_QUERY, {
     variables: {
       ingredients: props.ingredients,
     },
   });
-  if (loading) return null;
   if (error) return `Error! ${error}`;
 
   const recipes = data?.getRecipes;
@@ -16,14 +14,18 @@ export default function RecipesList(props) {
   return (
     <>
       <h2>Your recipes</h2>
-      {recipes.map((recipe) => (
-        <ul key={recipe.id}>
-          <li>
-            <p>{recipe.title}</p>
-            <img src={recipe.image}></img>
-          </li>
-        </ul>
-      ))}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        recipes.map((recipe) => (
+          <ul key={recipe.id}>
+            <li>
+              <p>{recipe.title}</p>
+              <img src={recipe.image}></img>
+            </li>
+          </ul>
+        ))
+      )}
     </>
   );
 }
