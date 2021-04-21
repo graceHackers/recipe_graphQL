@@ -3,7 +3,7 @@ import Recipes from '../components/Recipes';
 export default function HomePage() {
   return (
     <>
-      <h1>StepZen React Tutorial</h1>
+      <h1>Find Recipes by Ingredients!</h1>
       <Recipes />
     </>
   );
