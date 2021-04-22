@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { GET_RECIPE_INGREDIENTS_QUERY } from "../queries/getRecipeIngredients";
+import { Container } from "react-bootstrap";
 
 export default function SingleRecipeIngredients(props) {
   const id = Number(props.id);
@@ -15,7 +16,7 @@ export default function SingleRecipeIngredients(props) {
   const recipeIngredients = data?.getRecipeIngredients;
 
   return (
-    <div>
+    <Container>
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -35,6 +36,6 @@ export default function SingleRecipeIngredients(props) {
           })}
         </>
       )}
-    </div>
+    </Container>
   );
 }
