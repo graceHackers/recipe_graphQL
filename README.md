@@ -14,7 +14,7 @@ This was part of Mintbean's(https://mintbean.io/) Hackathon event : GraphQL Lear
 
 ## Tech Stack
 
-React, Bootstrap, Apollo Client, GraphQL, Stepzen, Heroku (deployment)
+React, Bootstrap, Spoonacular API, Apollo Client, GraphQL, Stepzen, Heroku (deployment)
 
 ## Setup & Installation Requirements
 
