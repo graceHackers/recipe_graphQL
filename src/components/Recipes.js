@@ -6,7 +6,7 @@ export default function Recipes() {
   return (
     <>
       <Container className='text-center'>
-        <h2>What ingredients do you have?</h2>
+        <h2 className='mt-5 mb-5'>What ingredients do you have?</h2>
         <IngredientsForm />
       </Container>
     </>

@@ -91,19 +91,27 @@ export default function IngredientsForm() {
                 </Row>
               );
             })}
-            <Button
-              className='ml-2 mt-2'
-              variant='dark'
-              type='button'
-              onClick={handleAdd}
-            >
-              Add
-            </Button>
-            {''}
-            <Button className='ml-2 mt-2' variant='info' type='submit'>
-              Submit
-            </Button>
-
+            <Row className='justify-content-center'>
+              <Button
+                className=' mt-2'
+                variant='dark'
+                type='button'
+                onClick={handleAdd}
+              >
+                Add
+              </Button>
+              {''}
+            </Row>
+            <Row className='justify-content-center'>
+              <Button
+                className=' mt-4'
+                variant='info'
+                type='submit'
+                style={{ fontSize: '20px' }}
+              >
+                Submit
+              </Button>
+            </Row>
             {maxedout && <p>You can't add anymore. Sorry.</p>}
             {submitted && <RecipesList ingredients={submittedIngredients} />}
           </Form.Group>
