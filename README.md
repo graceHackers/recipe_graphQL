@@ -5,6 +5,7 @@
 Welcome to Kiki's Recipe! Gather your ingredients and get an inspiration for your your next meal. 
 <br />At Kiki's Recipe, you can add up to 10 ingredients, hit submit and watch as you are wonderously supplied with amazing recipes.
 
+<img src="https://user-images.githubusercontent.com/74216048/115742141-66b01080-a35e-11eb-89d7-a23e489a4824.png" width="600" alt="image of the app">
 <img src="https://user-images.githubusercontent.com/74216048/115743287-88f65e00-a35f-11eb-8cfc-5959fdef95b7.png" width="600" alt="image of the app">
 
 Checkout our app here :
