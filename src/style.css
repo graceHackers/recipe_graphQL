@@ -13,7 +13,7 @@ nav {
   /* The image used */
 
   /* Add the blur effect */
-  filter: blur(8px);
+  filter: blur(1px);
   -webkit-filter: blur(1px);
 
   /* Center and scale the image nicely */

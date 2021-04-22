@@ -1,12 +1,11 @@
-import IngredientsForm from './IngredientsForm';
-import Container from 'react-bootstrap/Container';
+import IngredientsForm from "./IngredientsForm";
+import Container from "react-bootstrap/Container";
 
 export default function Recipes() {
-  console.log('Recipes component');
   return (
     <>
-      <Container className='text-center'>
-        <h2 className='mt-5 mb-5'>What ingredients do you have?</h2>
+      <Container className="text-center">
+        <h2 className="mt-5 mb-5">What ingredients do you have?</h2>
         <IngredientsForm />
       </Container>
     </>

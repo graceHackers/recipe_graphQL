@@ -1,28 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import RecipesList from './RecipesList';
-import { Button, Form, Container, Row, Col } from 'react-bootstrap';
-// import Form from 'react-bootstrap/Form';
-// import Container from 'react-bootstrap/Container';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState, useEffect } from "react";
+import RecipesList from "./RecipesList";
+import { Button, Form, Container, Row, Col } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function IngredientsForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [submittedIngredients, setSubmittedIngredients] = useState('');
+  const [submittedIngredients, setSubmittedIngredients] = useState("");
 
   const [inputIngredients, setInputIngredients] = useState([]);
   const [maxedout, setMaxedout] = useState(false);
 
   //component did mount
   useEffect(() => {
-    setInputIngredients(['']);
+    setInputIngredients([""]);
   }, []);
 
   function handleSubmit(evt) {
     evt.preventDefault();
 
     //['tomato', 'cheese', 'flour'] => 'tomato,+cheese,+flour'
-    const stringIngredient = inputIngredients.join(',+');
-    console.log('inside submit', stringIngredient);
+    const stringIngredient = inputIngredients.join(",+");
 
     setSubmitted(true);
     setSubmittedIngredients(stringIngredient);
@@ -39,7 +36,7 @@ export default function IngredientsForm() {
 
   function handleAdd() {
     if (inputIngredients.length < 10) {
-      setInputIngredients([...inputIngredients, '']);
+      setInputIngredients([...inputIngredients, ""]);
     } else {
       setMaxedout(true);
     }
@@ -53,61 +50,57 @@ export default function IngredientsForm() {
 
   return (
     <>
-      <Container className='text-center'>
+      <Container className="text-center">
         <Form onSubmit={handleSubmit}>
-          {/* <Form.Row> */}
-          <Form.Group controlId='formHorizontalEmail'>
+          <Form.Group controlId="formHorizontalEmail">
             {inputIngredients.map((inputValue, idx) => {
               return (
                 <Row
                   key={idx + 1}
-                  id='ingredientForm'
-                  className='justify-content-center'
+                  id="ingredientForm"
+                  className="justify-content-center"
                 >
-                  {/* <label>{`ingredient${idx + 1}`}:</label> */}
                   <Col md sm xs={2}>
                     <Form.Label>{`Ingredient${idx + 1}`}</Form.Label>
                   </Col>
                   <Col md sm xs={4}>
                     <Form.Control
-                      // <input
                       name={`ingredient${idx + 1}`}
                       value={inputValue}
                       onChange={(evt) => onChange(evt, idx)}
-                      className='mt-2'
-                      // ></input>
+                      className="mt-2"
                     />
                   </Col>
                   <Col md sm xs={2}>
                     <Button
-                      variant='outline-info'
-                      size='sm'
-                      type='button'
+                      variant="outline-info"
+                      size="sm"
+                      type="button"
                       onClick={(evt) => handleDelete(evt, idx)}
                     >
-                      {''}delete
+                      {""}delete
                     </Button>
                   </Col>
                 </Row>
               );
             })}
-            <Row className='justify-content-center'>
+            <Row className="justify-content-center">
               <Button
-                className=' mt-2'
-                variant='dark'
-                type='button'
+                className=" mt-2"
+                variant="dark"
+                type="button"
                 onClick={handleAdd}
               >
                 Add
               </Button>
-              {''}
+              {""}
             </Row>
-            <Row className='justify-content-center'>
+            <Row className="justify-content-center">
               <Button
-                className=' mt-4'
-                variant='info'
-                type='submit'
-                style={{ fontSize: '20px' }}
+                className=" mt-4"
+                variant="info"
+                type="submit"
+                style={{ fontSize: "20px" }}
               >
                 Submit
               </Button>
@@ -115,7 +108,6 @@ export default function IngredientsForm() {
             {maxedout && <p>You can't add anymore. Sorry.</p>}
             {submitted && <RecipesList ingredients={submittedIngredients} />}
           </Form.Group>
-          {/* </Form.Row> */}
         </Form>
       </Container>
     </>
