@@ -23,15 +23,19 @@ export default function SingleRecipeInstruction(props) {
           <h3 style={{ fontSize: "20px" }} className="mb-3">
             Instruction:
           </h3>
-          {recipeInstruction.map((steps, idx) => {
-            return (
-              <div key={idx}>
-                <p style={{ fontSize: "18px" }}>
-                  {steps.number}. {steps.step}
-                </p>
-              </div>
-            );
-          })}
+          {recipeInstruction.length > 1 ? (
+            recipeInstruction.map((steps, idx) => {
+              return (
+                <div key={idx}>
+                  <p style={{ fontSize: "18px" }}>
+                    {steps.number}. {steps.step}
+                  </p>
+                </div>
+              );
+            })
+          ) : (
+            <p>Sorry, no cooking instruction available for this dish...</p>
+          )}
         </>
       )}
     </div>

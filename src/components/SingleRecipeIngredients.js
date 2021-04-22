@@ -26,7 +26,10 @@ export default function SingleRecipeIngredients(props) {
           {recipeIngredients.map((ingredient, idx) => {
             return (
               <ul key={idx}>
-                <li style={{ fontSize: "18px" }}>{ingredient.name}</li>
+                <li style={{ fontSize: "18px" }}>
+                  {ingredient.name}: {ingredient.amount_value}{" "}
+                  {ingredient.amount_unit}
+                </li>
               </ul>
             );
           })}
