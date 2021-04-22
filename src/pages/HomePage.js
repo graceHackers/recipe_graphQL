@@ -13,8 +13,9 @@ export default function HomePage() {
         id="homepage-image"
         className="justify-content-center align-items-center"
       ></Row>
-      <Row id="homepage-button">
-        <Link to={"/recipes"}>
+      <Row id="homepage-button" >
+        <Link to={"/recipes"}         className="justify-content-center align-items-center"
+>
           <Button
             variant="warning"
             className="mt-5"

@@ -2,17 +2,33 @@ import React, { useState, useEffect } from "react";
 import RecipesList from "./RecipesList";
 import { Button, Form, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import {Redirect} from 'react-router-dom';
 
-export default function IngredientsForm() {
+export default function IngredientsForm(props) {
   const [submitted, setSubmitted] = useState(false);
   const [submittedIngredients, setSubmittedIngredients] = useState("");
+  console.log('form props', props)
+  // const input = props.ingredients || ['']
+  // console.log('input', input)
 
-  const [inputIngredients, setInputIngredients] = useState([]);
+  const [inputIngredients, setInputIngredients] = useState(['']);
   const [maxedout, setMaxedout] = useState(false);
+  console.log('input ingredients', inputIngredients)
+
+  // const { loading, error, data } = useQuery(GET_RECIPES_QUERY, {
+  //   variables: {
+  //     ingredients: props.match.params.ingredients,
+  //   },
+  // });
+  // if (error) return `Error! ${error}`;
+
+  // const recipes = data?.getRecipes;
+
 
   //component did mount
   useEffect(() => {
-    setInputIngredients([""]);
+    const input = props.ingredients || ['']
+    setInputIngredients(input);
   }, []);
 
   function handleSubmit(evt) {
@@ -23,6 +39,9 @@ export default function IngredientsForm() {
 
     setSubmitted(true);
     setSubmittedIngredients(stringIngredient);
+    console.log('submitted', submittedIngredients)
+    // return <Redirect to='/' />
+    // return <Redirect to={`/results/${submittedIngredients}`} />
   }
 
   function onChange(evt, idx) {
@@ -96,17 +115,18 @@ export default function IngredientsForm() {
               {""}
             </Row>
             <Row className="justify-content-center">
-              <Button
-                className=" mt-4"
-                variant="info"
-                type="submit"
-                style={{ fontSize: "20px" }}
-              >
-                Submit
-              </Button>
+                <Button
+                  className=" mt-4"
+                  variant="info"
+                  type="submit"
+                  style={{ fontSize: "20px" }}
+                >
+                  Submit
+                </Button>
             </Row>
             {maxedout && <p>You can't add anymore. Sorry.</p>}
-            {submitted && <RecipesList ingredients={submittedIngredients} />}
+            {submitted && <Redirect to={`/results/${submittedIngredients}`}/>}
+            {/* {submitted && <RecipesList ingredients={submittedIngredients} />} */}
           </Form.Group>
         </Form>
       </Container>

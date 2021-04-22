@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 export default function SingleRecipe(props) {
   const id = props.match.params.recipeId;
-  const title = props.location.props.title;
-  const image = props.location.props.image;
+  const {title, image, searchIngredients} = props.location.props
+
   return (
     <Container className="mt-4">
       <Row>
@@ -31,7 +31,7 @@ export default function SingleRecipe(props) {
       <hr />
       <SingleRecipeInstruction id={id} />
       <Container className="text-center">
-        <Link to="/recipes">
+        <Link to={`/results/${searchIngredients}`}>
           <Button variant="outline-secondary" className="mt-3 mb-3">
             Back to Recipes
           </Button>

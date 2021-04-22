@@ -6,6 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import Badge from 'react-bootstrap/Badge';
+import RecipesList from '../components/RecipesList'
 
 export default function Routes() {
   return (
@@ -32,6 +33,7 @@ export default function Routes() {
         <Route exact path='/' component={HomePage} />
         <Route exact path='/recipes' component={Recipes} />
         <Route exact path='/recipes/:recipeId' component={SingleRecipe} />
+        <Route exact path='/results/:ingredients' component={RecipesList} />
       </Switch>
     </>
   );
