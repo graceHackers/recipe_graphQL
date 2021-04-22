@@ -22,7 +22,7 @@ export default function Routes() {
                 <Badge variant='secondary'>Search new recipes</Badge>
               </Nav.Link>
               <Nav.Link target='_blank' href='https://mintbean.io/' className='ml-auto'>
-                <Badge variant='info'>Check out Mintbean</Badge>
+                <Badge variant='info'>Check out Mintbean!</Badge>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
