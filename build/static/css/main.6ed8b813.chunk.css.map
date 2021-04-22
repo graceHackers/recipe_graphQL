@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/style.css"],"names":[],"mappings":"AAAA,KACE,qBAAuB,CACvB,0BACF,CAEA,IACE,wBACF","file":"main.6ed8b813.chunk.css","sourcesContent":["body {\r\n  background-color: white;\r\n  font-family: 'Neuton', serif;\r\n}\r\n\r\nnav {\r\n  background-color: #ffea00;\r\n}\r\n\r\n"]}

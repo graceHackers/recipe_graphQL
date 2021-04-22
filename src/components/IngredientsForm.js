@@ -93,7 +93,7 @@ export default function IngredientsForm() {
               );
             })}
             <Button
-              className='ml-2'
+              className='ml-2 mt-2'
               variant='primary'
               type='button'
               onClick={handleAdd}
@@ -101,7 +101,7 @@ export default function IngredientsForm() {
               Add
             </Button>
             {''}
-            <Button className='ml-2' variant='success' type='submit'>
+            <Button className='ml-2 mt-2' variant='success' type='submit'>
               Submit
             </Button>
 
