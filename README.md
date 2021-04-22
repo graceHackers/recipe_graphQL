@@ -8,10 +8,12 @@ Welcome to Kiki's Recipe! Gather your ingredients and get an inspiration for you
 <img src="https://user-images.githubusercontent.com/74216048/115742141-66b01080-a35e-11eb-89d7-a23e489a4824.png" width="600" alt="image of the app">
 <img src="https://user-images.githubusercontent.com/74216048/115743287-88f65e00-a35f-11eb-8cfc-5959fdef95b7.png" width="600" alt="image of the app">
 
+This was part of Mintbean's(https://mintbean.io/) Hackathon event : GraphQL Learn 'n' Hack hosted by StepZen.
+
+## Live Demo
+
 Checkout our app here :
 https://kikis-recipe.herokuapp.com/
-
-This was part of Mintbean's(https://mintbean.io/) Hackathon event : GraphQL Learn 'n' Hack hosted by StepZen.
 
 ## Tech Stack
 
