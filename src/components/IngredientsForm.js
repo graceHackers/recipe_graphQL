@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import RecipesList from './RecipesList';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function IngredientsForm() {
@@ -51,51 +52,55 @@ export default function IngredientsForm() {
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
-      {/* <Form.Row> */}
-      <Form.Group controlId='formHorizontalEmail'>
-        {inputIngredients.map((inputValue, idx) => {
-          return (
-            <div key={idx + 1}>
-              {/* <label>{`ingredient${idx + 1}`}:</label> */}
-              <Form.Label column sm={2}>
-                {`ingredient${idx + 1}`}:{/* </Form.Label> */}
-                <Form.Control
-                  // <input
-                  name={`ingredient${idx + 1}`}
-                  value={inputValue}
-                  onChange={(evt) => onChange(evt, idx)}
-                  // ></input>
-                />
-              </Form.Label>
-              <Button
-                variant='outline-primary'
-                size='sm'
-                type='button'
-                onClick={(evt) => handleDelete(evt, idx)}
-              >
-                {''}delete
-              </Button>
-            </div>
-          );
-        })}
-        <Button
-          className='ml-3'
-          variant='primary'
-          type='button'
-          onClick={handleAdd}
-        >
-          Add
-        </Button>
-        {''}
-        <Button className='ml-2' variant='success' type='submit'>
-          Submit
-        </Button>
+    <>
+      <Container className='text-center'>
+        <Form onSubmit={handleSubmit}>
+          {/* <Form.Row> */}
+          <Form.Group controlId='formHorizontalEmail'>
+            {inputIngredients.map((inputValue, idx) => {
+              return (
+                <div key={idx + 1}>
+                  {/* <label>{`ingredient${idx + 1}`}:</label> */}
+                  <Form.Label column sm={2}>
+                    {`ingredient${idx + 1}`}:{/* </Form.Label> */}
+                    <Form.Control
+                      // <input
+                      name={`ingredient${idx + 1}`}
+                      value={inputValue}
+                      onChange={(evt) => onChange(evt, idx)}
+                      // ></input>
+                    />
+                  </Form.Label>
+                  <Button
+                    variant='outline-primary'
+                    size='sm'
+                    type='button'
+                    onClick={(evt) => handleDelete(evt, idx)}
+                  >
+                    {''}delete
+                  </Button>
+                </div>
+              );
+            })}
+            <Button
+              className='ml-3'
+              variant='primary'
+              type='button'
+              onClick={handleAdd}
+            >
+              Add
+            </Button>
+            {''}
+            <Button className='ml-2' variant='success' type='submit'>
+              Submit
+            </Button>
 
-        {maxedout && <p>You can't add anymore. Sorry.</p>}
-        {submitted && <RecipesList ingredients={submittedIngredients} />}
-      </Form.Group>
-      {/* </Form.Row> */}
-    </Form>
+            {maxedout && <p>You can't add anymore. Sorry.</p>}
+            {submitted && <RecipesList ingredients={submittedIngredients} />}
+          </Form.Group>
+          {/* </Form.Row> */}
+        </Form>
+      </Container>
+    </>
   );
 }
