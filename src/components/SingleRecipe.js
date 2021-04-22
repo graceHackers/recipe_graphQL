@@ -12,9 +12,13 @@ export default function SingleRecipe(props) {
       <Badge variant="success" className="mb-3">
         Recipe ID #{id}
       </Badge>
-      <h1 style={{ fontSize: "2.5rem" }}>{title}</h1>
-      <img src={image} />
-      <SingleRecipeIngredients id={id} />
+      <h1 style={{ fontSize: "2.5rem" }} className="mb-5 mt-2">
+        {title}
+      </h1>
+      <div id="image-ingredient-container">
+        <img src={image} className="mr-5" />
+        <SingleRecipeIngredients id={id} />
+      </div>
       <hr />
       <SingleRecipeInstruction id={id} />
     </Container>

@@ -1,9 +1,12 @@
 body {
   background-color: white;
-  font-family: 'Neuton', serif;
+  font-family: "Neuton", serif;
 }
 
 nav {
   background-color: #ffea00;
 }
 
+#image-ingredient-container {
+  display: flex;
+}
