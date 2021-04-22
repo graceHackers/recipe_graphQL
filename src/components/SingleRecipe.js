@@ -1,8 +1,22 @@
-import { useQuery } from '@apollo/react-hooks';
-import { GET_RECIPES_QUERY } from '../queries/getRecipes.js';
-import React, { useState, useEffect } from 'react';
+import React from "react";
+import SingleRecipeInstruction from "./SingleRecipeInstruction";
+import SingleRecipeIngredients from "./SingleRecipeIngredients";
+import { Container, Badge } from "react-bootstrap";
 
 export default function SingleRecipe(props) {
-  console.log('props', props.match.params.recipeId);
-  return <h1>single recipe</h1>;
+  const id = props.match.params.recipeId;
+  const title = props.location.props.title;
+  const image = props.location.props.image;
+  return (
+    <Container className="mt-4">
+      <Badge variant="success" className="mb-3">
+        Recipe ID #{id}
+      </Badge>
+      <h1 style={{ fontSize: "2.5rem" }}>{title}</h1>
+      <img src={image} />
+      <SingleRecipeIngredients id={id} />
+      <hr />
+      <SingleRecipeInstruction id={id} />
+    </Container>
+  );
 }

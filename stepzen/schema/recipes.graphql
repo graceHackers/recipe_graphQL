@@ -7,7 +7,34 @@ type Recipe {
 type Query {
   getRecipes(ingredients: String!): [Recipe]
     @rest(
-      endpoint: "https://api.spoonacular.com/recipes/findByIngredients?apiKey=$apikey&ingredients=$ingredients&number=5"
+      endpoint: "https://api.spoonacular.com/recipes/findByIngredients?apiKey=$apikey&ingredients=$ingredients&number=50"
+      configuration: "recipe_config"
+    )
+}
+
+type RecipeInstruction {
+  number: Int
+  step: String
+}
+
+type Query {
+  getRecipeInstruction(recipeId: Int!): [RecipeInstruction]
+    @rest(
+      resultroot: "steps[]"
+      endpoint: "https://api.spoonacular.com/recipes/$recipeId/analyzedInstructions?apiKey=$apikey"
+      configuration: "recipe_config"
+    )
+}
+
+type RecipeIngredients {
+  name: String
+}
+
+type Query {
+  getRecipeIngredients(recipeId: Int!): [RecipeIngredients]
+    @rest(
+      resultroot: "ingredients[]"
+      endpoint: "https://api.spoonacular.com/recipes/$recipeId/ingredientWidget.json?apiKey=$apikey"
       configuration: "recipe_config"
     )
 }

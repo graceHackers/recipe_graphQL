@@ -1,11 +1,10 @@
-import { useQuery } from '@apollo/react-hooks';
-import { GET_RECIPES_QUERY } from '../queries/getRecipes.js';
-import { Link } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import { useQuery } from "@apollo/react-hooks";
+import { GET_RECIPES_QUERY } from "../queries/getRecipes.js";
+import { Link } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
 
 export default function RecipesList(props) {
   const { loading, error, data } = useQuery(GET_RECIPES_QUERY, {
@@ -18,7 +17,7 @@ export default function RecipesList(props) {
   const recipes = data?.getRecipes;
 
   return (
-    <Container fluid>
+    <Container>
       <Row>
         <h2>Your recipes</h2>
       </Row>
@@ -28,7 +27,12 @@ export default function RecipesList(props) {
         <Row>
           {recipes.map((recipe) => (
             <Card key={recipe.id}>
-              <Link to={`/recipes/${recipe.id}`}>
+              <Link
+                to={{
+                  pathname: `/recipes/${recipe.id}`,
+                  props: { title: recipe.title, image: recipe.image },
+                }}
+              >
                 <p>{recipe.title}</p>
                 <img src={recipe.image}></img>
               </Link>
