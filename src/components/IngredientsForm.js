@@ -66,9 +66,7 @@ export default function IngredientsForm() {
                 >
                   {/* <label>{`ingredient${idx + 1}`}:</label> */}
                   <Col md sm xs={2}>
-                    <Form.Label>
-                      {`ingredient${idx + 1}`}:{/* </Form.Label> */}
-                    </Form.Label>
+                    <Form.Label>{`Ingredient${idx + 1}`}</Form.Label>
                   </Col>
                   <Col md sm xs={4}>
                     <Form.Control
@@ -76,6 +74,7 @@ export default function IngredientsForm() {
                       name={`ingredient${idx + 1}`}
                       value={inputValue}
                       onChange={(evt) => onChange(evt, idx)}
+                      className='mt-2'
                       // ></input>
                     />
                   </Col>

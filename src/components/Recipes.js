@@ -5,7 +5,7 @@ export default function Recipes() {
   console.log('Recipes component');
   return (
     <>
-      <Container>
+      <Container className='text-center'>
         <h2>What ingredients do you have?</h2>
         <IngredientsForm />
       </Container>
