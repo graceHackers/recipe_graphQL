@@ -13,7 +13,6 @@ export default function SingleRecipeInstruction(props) {
   if (error) return `Error! ${error}`;
 
   const recipeInstruction = data?.getRecipeInstruction;
-  console.log("instruction", recipeInstruction);
 
   return (
     <div>
@@ -21,16 +20,22 @@ export default function SingleRecipeInstruction(props) {
         <p>Loading...</p>
       ) : (
         <>
-          <p>Instruction:</p>
-          {recipeInstruction.map((steps, idx) => {
-            return (
-              <div key={idx}>
-                <p>
-                  {steps.number}. {steps.step}
-                </p>
-              </div>
-            );
-          })}
+          <h3 style={{ fontSize: "20px" }} className="mb-3">
+            Instruction:
+          </h3>
+          {recipeInstruction.length > 1 ? (
+            recipeInstruction.map((steps, idx) => {
+              return (
+                <div key={idx}>
+                  <p style={{ fontSize: "18px" }}>
+                    {steps.number}. {steps.step}
+                  </p>
+                </div>
+              );
+            })
+          ) : (
+            <p>Sorry, no cooking instruction available for this dish...</p>
+          )}
         </>
       )}
     </div>

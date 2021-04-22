@@ -28,6 +28,8 @@ type Query {
 
 type RecipeIngredients {
   name: String
+  amount_unit: String
+  amount_value: Int
 }
 
 type Query {
@@ -35,6 +37,10 @@ type Query {
     @rest(
       resultroot: "ingredients[]"
       endpoint: "https://api.spoonacular.com/recipes/$recipeId/ingredientWidget.json?apiKey=$apikey"
+      setters: [
+        { field: "amount_unit", path: "amount.us.unit" }
+        { field: "amount_value", path: "amount.us.value" }
+      ]
       configuration: "recipe_config"
     )
 }

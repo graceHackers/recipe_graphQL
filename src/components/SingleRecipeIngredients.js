@@ -13,7 +13,6 @@ export default function SingleRecipeIngredients(props) {
   if (error) return `Error! ${error}`;
 
   const recipeIngredients = data?.getRecipeIngredients;
-  console.log("ingredients", recipeIngredients);
 
   return (
     <div>
@@ -21,11 +20,16 @@ export default function SingleRecipeIngredients(props) {
         <p>Loading...</p>
       ) : (
         <>
-          <p>Ingredients:</p>
+          <h3 style={{ fontSize: "20px" }} className="mb-3">
+            Ingredients:
+          </h3>
           {recipeIngredients.map((ingredient, idx) => {
             return (
               <ul key={idx}>
-                <li>{ingredient.name}</li>
+                <li style={{ fontSize: "18px" }}>
+                  {ingredient.name}: {ingredient.amount_value}{" "}
+                  {ingredient.amount_unit}
+                </li>
               </ul>
             );
           })}
