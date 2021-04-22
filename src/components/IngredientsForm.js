@@ -80,7 +80,7 @@ export default function IngredientsForm() {
                   </Col>
                   <Col md sm xs={2}>
                     <Button
-                      variant='outline-primary'
+                      variant='outline-info'
                       size='sm'
                       type='button'
                       onClick={(evt) => handleDelete(evt, idx)}
@@ -93,14 +93,14 @@ export default function IngredientsForm() {
             })}
             <Button
               className='ml-2 mt-2'
-              variant='primary'
+              variant='dark'
               type='button'
               onClick={handleAdd}
             >
               Add
             </Button>
             {''}
-            <Button className='ml-2 mt-2' variant='success' type='submit'>
+            <Button className='ml-2 mt-2' variant='info' type='submit'>
               Submit
             </Button>
 
