@@ -5,7 +5,7 @@ import { client } from './utils/client';
 import Routes from './pages/Routes';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import "./style.css";
 
 console.log(process.env);
 render(
