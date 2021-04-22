@@ -17,7 +17,7 @@ export default function RecipesList(props) {
   const recipes = data?.getRecipes;
 
   return (
-    <Container fluid>
+    <Container>
       <Row>
         <h2>Your recipes</h2>
       </Row>
