@@ -24,9 +24,11 @@ export default function SingleRecipeInstruction(props) {
           <p>Instruction:</p>
           {recipeInstruction.map((steps, idx) => {
             return (
-              <ul key={idx}>
-                <li>{steps.name}</li>
-              </ul>
+              <div key={idx}>
+                <p>
+                  {steps.number}. {steps.step}
+                </p>
+              </div>
             );
           })}
         </>
