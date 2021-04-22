@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import RecipesList from './RecipesList';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Container from 'react-bootstrap/Container';
+import { Button, Form, Container, Row, Col } from 'react-bootstrap';
+// import Form from 'react-bootstrap/Form';
+// import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function IngredientsForm() {
@@ -59,10 +59,18 @@ export default function IngredientsForm() {
           <Form.Group controlId='formHorizontalEmail'>
             {inputIngredients.map((inputValue, idx) => {
               return (
-                <div key={idx + 1}>
+                <Row
+                  key={idx + 1}
+                  id='ingredientForm'
+                  className='justify-content-center'
+                >
                   {/* <label>{`ingredient${idx + 1}`}:</label> */}
-                  <Form.Label column sm={2}>
-                    {`ingredient${idx + 1}`}:{/* </Form.Label> */}
+                  <Col md sm xs={2}>
+                    <Form.Label>
+                      {`ingredient${idx + 1}`}:{/* </Form.Label> */}
+                    </Form.Label>
+                  </Col>
+                  <Col md sm xs={4}>
                     <Form.Control
                       // <input
                       name={`ingredient${idx + 1}`}
@@ -70,20 +78,22 @@ export default function IngredientsForm() {
                       onChange={(evt) => onChange(evt, idx)}
                       // ></input>
                     />
-                  </Form.Label>
-                  <Button
-                    variant='outline-primary'
-                    size='sm'
-                    type='button'
-                    onClick={(evt) => handleDelete(evt, idx)}
-                  >
-                    {''}delete
-                  </Button>
-                </div>
+                  </Col>
+                  <Col md sm xs={2}>
+                    <Button
+                      variant='outline-primary'
+                      size='sm'
+                      type='button'
+                      onClick={(evt) => handleDelete(evt, idx)}
+                    >
+                      {''}delete
+                    </Button>
+                  </Col>
+                </Row>
               );
             })}
             <Button
-              className='ml-3'
+              className='ml-2'
               variant='primary'
               type='button'
               onClick={handleAdd}
