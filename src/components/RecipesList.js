@@ -5,11 +5,13 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import IngredientsForm from './IngredientsForm.js';
 
 export default function RecipesList(props) {
+  const ingredients = props.match.params.ingredients
   const { loading, error, data } = useQuery(GET_RECIPES_QUERY, {
     variables: {
-      ingredients: props.ingredients,
+      ingredients: ingredients,
     },
   });
   if (error) return `Error! ${error}`;
@@ -17,7 +19,9 @@ export default function RecipesList(props) {
   const recipes = data?.getRecipes;
 
   return (
-    <Container>
+    <Container className="text-center">
+    <h2 className="mt-5 mb-5">Edit ingredients for more recipes!</h2>
+      <IngredientsForm ingredients={ingredients.split(',+')}/>
       <Row>
         <h2 className='mt-5 mb-3 ml-3'>Your recipes</h2>
       </Row>
@@ -26,9 +30,8 @@ export default function RecipesList(props) {
       ) : (
         <Row>
           {recipes.map((recipe) => (
-            <Col>
+            <Col key={recipe.id} >
               <Card
-                key={recipe.id}
                 className='mb-3 p-2'
                 style={{
                   boxShadow: '0px 0px 10px 2px rgba(100, 100, 100, 0.6) ',
@@ -38,7 +41,7 @@ export default function RecipesList(props) {
                   style={{ textDecoration: 'none' }}
                   to={{
                     pathname: `/recipes/${recipe.id}`,
-                    props: { title: recipe.title, image: recipe.image },
+                    props: { title: recipe.title, image: recipe.image, searchIngredients: ingredients },
                   }}
                 >
                   <p style={{ color: 'black' }}>{recipe.title}</p>
