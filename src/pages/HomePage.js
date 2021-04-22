@@ -1,15 +1,42 @@
-import Recipes from '../components/Recipes';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import SingleRecipe from '../components/SingleRecipe';
+import { Link } from 'react-router-dom';
+import Card from 'react-bootstrap/Card'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 export default function HomePage() {
   return (
-    <>
-      <h1>Find Recipes by Ingredients!</h1>
-      <Switch>
-        <Route exact path='/' component={Recipes} />
-        <Route exact path='/recipes' component={Recipes} />
-        <Route exact path='/recipes/:recipeId' component={SingleRecipe} />
-      </Switch>
-    </>
+    <Container id='creators' className='text-center'>
+      <Row className='justify-content-center'>
+        <h1>Home Page</h1>
+      </Row>
+      <Row className='justify-content-center'>
+        <Link to={'/recipes'}>
+          <button>Start!</button>
+        </Link>
+      </Row>
+
+      <Row className='justify-content-center'>
+          <h1>Meet our team</h1>
+        </Row>
+        <Row className='justify-content-center'>
+          <Card>
+            <p>Danny Serrano</p>
+            <a>LinkedIn</a>
+            <a>Github</a>
+          </Card>
+          <Card>
+            <p>Natalie Rojas</p>
+            <a>LinkedIn</a>
+            <a>Github</a>
+          </Card>
+          <Card>
+            <p>Marjorie Meija</p>
+            <a>LinkedIn</a>
+            <a>Github</a>
+          </Card>
+        </Row>
+      <a>Check out Mintbean!</a>
+    </Container>
   );
 }
