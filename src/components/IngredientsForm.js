@@ -66,9 +66,7 @@ export default function IngredientsForm() {
                 >
                   {/* <label>{`ingredient${idx + 1}`}:</label> */}
                   <Col md sm xs={2}>
-                    <Form.Label>
-                      {`ingredient${idx + 1}`}:{/* </Form.Label> */}
-                    </Form.Label>
+                    <Form.Label>{`Ingredient${idx + 1}`}</Form.Label>
                   </Col>
                   <Col md sm xs={4}>
                     <Form.Control
@@ -76,12 +74,13 @@ export default function IngredientsForm() {
                       name={`ingredient${idx + 1}`}
                       value={inputValue}
                       onChange={(evt) => onChange(evt, idx)}
+                      className='mt-2'
                       // ></input>
                     />
                   </Col>
                   <Col md sm xs={2}>
                     <Button
-                      variant='outline-primary'
+                      variant='outline-info'
                       size='sm'
                       type='button'
                       onClick={(evt) => handleDelete(evt, idx)}
@@ -92,19 +91,27 @@ export default function IngredientsForm() {
                 </Row>
               );
             })}
-            <Button
-              className='ml-2'
-              variant='primary'
-              type='button'
-              onClick={handleAdd}
-            >
-              Add
-            </Button>
-            {''}
-            <Button className='ml-2' variant='success' type='submit'>
-              Submit
-            </Button>
-
+            <Row className='justify-content-center'>
+              <Button
+                className=' mt-2'
+                variant='dark'
+                type='button'
+                onClick={handleAdd}
+              >
+                Add
+              </Button>
+              {''}
+            </Row>
+            <Row className='justify-content-center'>
+              <Button
+                className=' mt-4'
+                variant='info'
+                type='submit'
+                style={{ fontSize: '20px' }}
+              >
+                Submit
+              </Button>
+            </Row>
             {maxedout && <p>You can't add anymore. Sorry.</p>}
             {submitted && <RecipesList ingredients={submittedIngredients} />}
           </Form.Group>
