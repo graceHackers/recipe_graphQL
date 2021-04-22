@@ -6,3 +6,28 @@ body {
 nav {
   background-color: #ffea00;
 }
+
+#homepage-image {
+  background-image: url("https://user-images.githubusercontent.com/74216048/115742141-66b01080-a35e-11eb-89d7-a23e489a4824.png");
+  height: 500px;
+  /* The image used */
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(1px);
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#homepage-button {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  padding: 20px;
+  text-align: center;
+}
