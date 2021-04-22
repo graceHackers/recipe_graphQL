@@ -1,8 +1,15 @@
-import { useQuery } from '@apollo/react-hooks';
-import { GET_RECIPES_QUERY } from '../queries/getRecipes.js';
-import React, { useState, useEffect } from 'react';
+import React from "react";
+import SingleRecipeInstruction from "./SingleRecipeInstruction";
+import SingleRecipeIngredients from "./SingleRecipeIngredients";
 
 export default function SingleRecipe(props) {
-  console.log('props', props.match.params.recipeId);
-  return <h1>single recipe</h1>;
+  const id = props.match.params.recipeId;
+  return (
+    <>
+      <h1>Single Recipe ID #{id}</h1>
+      <SingleRecipeIngredients id={id} />
+      <hr />
+      <SingleRecipeInstruction id={id} />
+    </>
+  );
 }
